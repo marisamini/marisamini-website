@@ -10,6 +10,8 @@ import ClientWrapper from "@/components/ClientWrapper";
 import VisitorStats from "@/components/VisitorStats";
 import { fetchSiteData, fetchWeeklySummary } from "@/lib/data";
 
+export const dynamic = "force-dynamic";
+
 function HomeContent({
   activeItem,
   handleClick,

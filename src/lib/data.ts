@@ -31,37 +31,29 @@ export async function fetchSiteData(): Promise<{
   avgLoadTime: number | null;
 }> {
   noStore();
-  const fetcher = async () => {
-    if (!sql) {
-      const legacy = process.env.LEGACY_VISITOR_COUNT;
-      const totalVisitors =
-        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
-      return { totalVisitors, avgLoadTime: null };
-    }
-    try {
-      const rows = (await sql`
-        SELECT COUNT(*)::int as count, AVG(page_load_time_ms)::float as avg
-        FROM visitors
-      `) as { count: number; avg: number | null }[];
-      const row = rows[0];
-      return {
-        totalVisitors: row?.count ?? 0,
-        avgLoadTime: row?.avg ?? null,
-      };
-    } catch {
-      const legacy = process.env.LEGACY_VISITOR_COUNT;
-      const totalVisitors =
-        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
-      return { totalVisitors, avgLoadTime: null };
-    }
-  };
-  const cachedFetcher = cache(fetcher, ["totalVisitorsAndAvgLoadTime"], {
-    revalidate: 60,
-  });
-  const result = await cachedFetcher();
-  const legacy = process.env.LEGACY_VISITOR_COUNT;
-  const legacyCount =
-    legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
-  result.totalVisitors = result.totalVisitors + legacyCount;
-  return result;
+  if (!sql) {
+    const legacy = process.env.LEGACY_VISITOR_COUNT;
+    const totalVisitors =
+      legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
+    return { totalVisitors, avgLoadTime: null };
+  }
+  try {
+    const rows = (await sql`
+      SELECT COUNT(*)::int as count, AVG(page_load_time_ms)::float as avg
+      FROM visitors
+    `) as { count: number; avg: number | null }[];
+    const row = rows[0];
+    const legacy = process.env.LEGACY_VISITOR_COUNT;
+    const legacyCount =
+      legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
+    return {
+      totalVisitors: (row?.count ?? 0) + legacyCount,
+      avgLoadTime: row?.avg ?? null,
+    };
+  } catch {
+    const legacy = process.env.LEGACY_VISITOR_COUNT;
+    const totalVisitors =
+      legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
+    return { totalVisitors, avgLoadTime: null };
+  }
 }
