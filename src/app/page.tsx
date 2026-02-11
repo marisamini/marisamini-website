@@ -6,13 +6,21 @@ import {
   TechnicalSkills,
 } from "@/components";
 import ClientWrapper from "@/components/ClientWrapper";
+import VisitorStats from "@/components/VisitorStats";
+import { fetchSiteData, fetchWeeklySummary } from "@/lib/data";
 
 function HomeContent({
   activeItem,
   handleClick,
+  totalVisitors = 0,
+  avgLoadTime = null,
+  chartData = [],
 }: {
   activeItem?: string;
   handleClick?: (item: string) => void;
+  totalVisitors?: number;
+  avgLoadTime?: number | null;
+  chartData?: { date: string; Visitors: number; AvgLoadTime: number }[];
 }) {
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl gap-12 px-6 py-12 md:gap-16">
@@ -31,14 +39,28 @@ function HomeContent({
         <Bio />
         <ListOfExperiences />
         <TechnicalSkills />
+        <VisitorStats
+          totalVisitors={totalVisitors}
+          avgLoadTime={avgLoadTime}
+          chartData={chartData}
+        />
       </main>
     </div>
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const [siteData, chartData] = await Promise.all([
+    fetchSiteData(),
+    fetchWeeklySummary(),
+  ]);
+
   return (
-    <ClientWrapper>
+    <ClientWrapper
+      totalVisitors={siteData.totalVisitors}
+      avgLoadTime={siteData.avgLoadTime}
+      chartData={chartData}
+    >
       <HomeContent />
     </ClientWrapper>
   );

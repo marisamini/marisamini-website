@@ -2,12 +2,21 @@
 
 import React, { useState, useEffect, ReactElement } from "react";
 import useIntersectionObserver from "@/utils/useIntersectionObserver";
+import type { ChartData } from "@/lib/definitions";
 
 interface ClientWrapperProps {
   children: ReactElement;
+  totalVisitors?: number;
+  avgLoadTime?: number | null;
+  chartData?: ChartData[];
 }
 
-export default function ClientWrapper({ children }: ClientWrapperProps) {
+export default function ClientWrapper({
+  children,
+  totalVisitors = 0,
+  avgLoadTime = null,
+  chartData = [],
+}: ClientWrapperProps) {
   const [activeSection, setActiveSection] = useState("");
   const [activeItem, setActiveItem] = useState("");
 
@@ -26,5 +35,11 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
 
   const handleClick = (item: string) => setActiveItem(item);
 
-  return React.cloneElement(children, { activeItem, handleClick });
+  return React.cloneElement(children, {
+    activeItem,
+    handleClick,
+    totalVisitors,
+    avgLoadTime,
+    chartData,
+  });
 }
