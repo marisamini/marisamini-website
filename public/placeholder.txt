@@ -1,0 +1,6 @@
+Add your assets here:
+- headshot.webp (your photo for the avatar)
+- favicon.png
+- apple-touch-icon.png (optional)
+- opengraph.png (optional, for social sharing)
+- resume.pdf (your resume, linked from the menu)
