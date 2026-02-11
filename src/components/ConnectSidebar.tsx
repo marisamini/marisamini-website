@@ -15,9 +15,9 @@ const FOCUS_AREAS = [
 ];
 
 const SELECTED_OUTCOMES = [
-  "Led data migration for Project Operations + Business Central go-live",
-  "Built Customer Voice & ClickDimensions automations and survey flows",
-  "Delivered CRM implementations across healthcare, government, and private sector",
+  "100% project success from discovery through go-live",
+  "Design, delivery, training, and data migrations on every engagement",
+  "Strong project management and stakeholder collaboration throughout",
 ];
 
 export default function ConnectSidebar() {
@@ -65,7 +65,7 @@ export default function ConnectSidebar() {
           </a>
         )}
         <p className="mt-2 text-xs text-gray-500">
-          Open to consulting opportunities
+          Open to consulting, product management, AI/technical, and sports-related opportunities
         </p>
       </div>
     </div>
