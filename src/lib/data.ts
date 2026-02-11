@@ -42,11 +42,22 @@ export async function fetchSiteData(): Promise<{
         avgLoadTime: row?.avg ?? null,
       };
     } catch {
-      return { totalVisitors: 0, avgLoadTime: null };
+      const legacy = process.env.LEGACY_VISITOR_COUNT;
+      const totalVisitors =
+        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 0;
+      return { totalVisitors, avgLoadTime: null };
     }
   };
   const cachedFetcher = cache(fetcher, ["totalVisitorsAndAvgLoadTime"], {
     revalidate: 60,
   });
-  return cachedFetcher();
+  const result = await cachedFetcher();
+  // If DB returned 0 (empty), add legacy count so pre-update views still show
+  if (result.totalVisitors === 0) {
+    const legacy = process.env.LEGACY_VISITOR_COUNT;
+    if (legacy && /^\d+$/.test(legacy)) {
+      result.totalVisitors = parseInt(legacy, 10);
+    }
+  }
+  return result;
 }

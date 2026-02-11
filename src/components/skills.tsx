@@ -33,9 +33,9 @@ const certifications = [
   "Microsoft Power Platform Solution Architect Expert",
   "Microsoft Power Platform Functional Consultant",
   "Teams Meeting and Meeting Rooms Technical Assessments",
-  "PL900: Microsoft Power Platform Fundamentals",
-  "PL100: Microsoft Power Platform App Maker",
-  "MB210: Microsoft Dynamics 365 Functional Consultant (Sales)",
+  "Microsoft Power Platform Fundamentals",
+  "Microsoft Power Platform App Maker",
+  "Microsoft Dynamics 365 Functional Consultant (Sales)",
 ];
 
 export default function TechnicalSkills() {

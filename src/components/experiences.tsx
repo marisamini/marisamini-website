@@ -4,19 +4,19 @@ import React from "react";
 const experiences = [
   {
     period: "2025",
-    role: "Project Operations Implementation",
-    company: "Integration with Business Central",
-    description:
-      "Led a Project Operations implementation integrated with Business Central, including managing end-to-end data migration to ensure accurate and timely go-live.",
-    technologies: ["Project Operations", "Dynamics 365", "Business Central", "Data Migration"],
-  },
-  {
-    period: "2025",
     role: "Customer Service and Sales Module Implementation",
     company: "Customer Voice and ClickDimensions",
     description:
       "Implemented Customer Service and Sales modules with Customer Voice surveys and ClickDimensions, building automations and survey flows to enhance customer engagement and insights.",
     technologies: ["Customer Service Hub", "Sales Hub", "Customer Voice", "ClickDimensions", "Power Automate"],
+  },
+  {
+    period: "2025",
+    role: "Project Operations Implementation",
+    company: "Integration with Business Central",
+    description:
+      "Helped lead a Project Operations implementation integrated with Business Central, co-designing the solution and managing end-to-end data migration to ensure accurate and timely go-live.",
+    technologies: ["Project Operations", "Dynamics 365", "Business Central", "Data Migration"],
   },
   {
     period: "2024",
