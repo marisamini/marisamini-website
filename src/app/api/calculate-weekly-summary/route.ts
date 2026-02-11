@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
-import { sql } from "@vercel/postgres";
+import { sql } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  if (!sql) {
+    return NextResponse.json({ ok: true });
+  }
   try {
     await sql`
       CREATE TABLE IF NOT EXISTS weeklysummary (

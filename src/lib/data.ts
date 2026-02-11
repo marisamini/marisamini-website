@@ -1,22 +1,23 @@
-import { sql } from "@vercel/postgres";
 import {
   unstable_noStore as noStore,
   unstable_cache as cache,
 } from "next/cache";
 import type { WeeklySummary } from "@/lib/definitions";
 import { processWeeklySummary } from "@/utils/index";
+import { sql } from "@/lib/db";
 
 export async function fetchWeeklySummary() {
   noStore();
   const fetcher = async () => {
+    if (!sql) return [];
     try {
-      const data = await sql`
+      const rows = (await sql`
         SELECT week_start, week_end, visitor_count, avg_load_time_ms
         FROM weeklysummary
         ORDER BY week_start DESC
         LIMIT 30
-      `;
-      return processWeeklySummary(data.rows as WeeklySummary[]);
+      `) as WeeklySummary[];
+      return processWeeklySummary(rows);
     } catch {
       return [];
     }
@@ -31,12 +32,18 @@ export async function fetchSiteData(): Promise<{
 }> {
   noStore();
   const fetcher = async () => {
+    if (!sql) {
+      const legacy = process.env.LEGACY_VISITOR_COUNT;
+      const totalVisitors =
+        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 0;
+      return { totalVisitors, avgLoadTime: null };
+    }
     try {
-      const data = await sql<{ count: number; avg: number | null }>`
+      const rows = (await sql`
         SELECT COUNT(*)::int as count, AVG(page_load_time_ms)::float as avg
         FROM visitors
-      `;
-      const row = data.rows[0];
+      `) as { count: number; avg: number | null }[];
+      const row = rows[0];
       return {
         totalVisitors: row?.count ?? 0,
         avgLoadTime: row?.avg ?? null,
@@ -52,12 +59,9 @@ export async function fetchSiteData(): Promise<{
     revalidate: 60,
   });
   const result = await cachedFetcher();
-  // If DB returned 0 (empty), add legacy count so pre-update views still show
-  if (result.totalVisitors === 0) {
-    const legacy = process.env.LEGACY_VISITOR_COUNT;
-    if (legacy && /^\d+$/.test(legacy)) {
-      result.totalVisitors = parseInt(legacy, 10);
-    }
-  }
+  const legacy = process.env.LEGACY_VISITOR_COUNT;
+  const legacyCount =
+    legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 0;
+  result.totalVisitors = result.totalVisitors + legacyCount;
   return result;
 }

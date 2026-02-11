@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sql } from "@vercel/postgres";
+import { sql } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  if (!sql) {
+    return NextResponse.json({ ok: true });
+  }
   try {
     const body = await request.json().catch(() => ({}));
     const loadTimeMs =
