@@ -106,6 +106,22 @@ After this, you own the code on **github.com/marisamini** and can update the sit
 
 ---
 
+## Visitor stats (Total Visitors & chart)
+
+The site can record each visit and show **Total Visitors** and **Avg. Page Load Time**, plus a weekly chart.
+
+**To turn it on:**
+
+1. In **Vercel** → your project → **Storage** (or **Integrations**): create or connect a **Postgres** database.
+2. Vercel will add the required env vars (e.g. `POSTGRES_URL`) to your project.
+3. Redeploy. On each page load the site will record a visit and the stats will update.
+
+The tables (`visitors`, `weeklysummary`) are created automatically the first time someone visits and when the weekly cron runs. The cron runs every Sunday (see `vercel.json`); you can also call `GET /api/calculate-weekly-summary` to refresh the chart data.
+
+If you don’t add Postgres, the **Total Visitors** number will use the optional `LEGACY_VISITOR_COUNT` env var (e.g. 907) so you can still show a count.
+
+---
+
 ## Optional: Run the site locally
 
 From your project folder:
