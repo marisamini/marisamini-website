@@ -35,7 +35,7 @@ export async function fetchSiteData(): Promise<{
     if (!sql) {
       const legacy = process.env.LEGACY_VISITOR_COUNT;
       const totalVisitors =
-        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 0;
+        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
       return { totalVisitors, avgLoadTime: null };
     }
     try {
@@ -51,7 +51,7 @@ export async function fetchSiteData(): Promise<{
     } catch {
       const legacy = process.env.LEGACY_VISITOR_COUNT;
       const totalVisitors =
-        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 0;
+        legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
       return { totalVisitors, avgLoadTime: null };
     }
   };
@@ -61,7 +61,7 @@ export async function fetchSiteData(): Promise<{
   const result = await cachedFetcher();
   const legacy = process.env.LEGACY_VISITOR_COUNT;
   const legacyCount =
-    legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 0;
+    legacy && /^\d+$/.test(legacy) ? parseInt(legacy, 10) : 907;
   result.totalVisitors = result.totalVisitors + legacyCount;
   return result;
 }
