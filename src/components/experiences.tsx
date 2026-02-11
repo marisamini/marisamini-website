@@ -70,9 +70,9 @@ const experiences = [
 
 export default function ListOfExperiences() {
   return (
-    <section id="experiences" className="space-y-6 scroll-mt-24">
+    <section id="experiences" className="space-y-6 scroll-mt-20 md:scroll-mt-24">
       <h2 className="text-lg font-semibold text-emerald-400">Experience</h2>
-      <ol className="space-y-8 border-l-2 border-gray-700 pl-6">
+      <ol className="space-y-6 md:space-y-8 border-l-2 border-gray-700 pl-5 md:pl-6">
         {experiences.map((exp, index) => (
           <li key={index} className="relative space-y-1">
             <span className="absolute -left-[29px] rounded-full bg-emerald-500/80 h-3 w-3 border-2 border-[#0a0a0a]" />
@@ -81,7 +81,7 @@ export default function ListOfExperiences() {
               {exp.role}
             </h3>
             <p className="text-sm text-gray-400">{exp.company}</p>
-            <p className="text-gray-300">{exp.description}</p>
+            <p className="text-base text-gray-300 md:text-sm">{exp.description}</p>
             {exp.technologies && exp.technologies.length > 0 && (
               <ul className="mt-2 flex flex-wrap gap-2">
                 {exp.technologies.map((tech, i) => (

@@ -40,7 +40,7 @@ const certifications = [
 
 export default function TechnicalSkills() {
   return (
-    <section id="technical-skills" className="space-y-8 scroll-mt-24">
+    <section id="technical-skills" className="space-y-8 scroll-mt-20 md:scroll-mt-24">
       <h2 className="text-lg font-semibold text-emerald-400">Technical Skills</h2>
 
       <div>

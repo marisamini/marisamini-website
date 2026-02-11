@@ -54,7 +54,7 @@ export default function ConnectSidebar() {
           href={LINKEDIN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-[#0A66C2] px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#0A66C2] px-4 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 active:opacity-90"
         >
           <LinkedInIcon className="h-4 w-4" />
           Connect on LinkedIn
@@ -63,7 +63,7 @@ export default function ConnectSidebar() {
           href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-2 rounded-lg border border-gray-600 px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
+          className="mt-2 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-gray-600 px-4 py-3 text-sm font-medium text-gray-300 transition-colors hover:border-emerald-500/50 hover:text-emerald-400 active:bg-gray-800"
         >
           <GitHubIcon className="h-4 w-4" />
           See how this site was built

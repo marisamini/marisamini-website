@@ -19,7 +19,7 @@ export default function VisitorStats({
 }: VisitorStatsProps) {
   const displayCount = totalVisitors > 0 ? totalVisitors : FALLBACK_VISITOR_COUNT;
   return (
-    <section id="visitor-stats" className="space-y-6 scroll-mt-24">
+    <section id="visitor-stats" className="space-y-6 scroll-mt-20 md:scroll-mt-24">
       <h2 className="text-lg font-semibold text-emerald-400">Site stats</h2>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded-lg border border-gray-700/50 bg-gray-800/50 p-4">

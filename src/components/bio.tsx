@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Bio() {
   return (
-    <section id="bio" className="space-y-4 scroll-mt-24">
-      <h2 className="text-lg font-semibold text-emerald-400">About</h2>
-      <div className="space-y-4 text-gray-300">
+    <section id="bio" className="space-y-4 scroll-mt-20 md:scroll-mt-24">
+      <h2 className="text-lg font-semibold text-emerald-400 md:text-lg">About</h2>
+      <div className="space-y-4 text-base text-gray-300 md:text-[15px]">
         <p>
           I am a Technology Consultant for Microsoft Dynamics 365 software at{" "}
           <span className="text-emerald-400">💼 Bond Consulting Services</span>, specializing
