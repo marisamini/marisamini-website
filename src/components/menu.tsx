@@ -4,7 +4,6 @@ import React from "react";
 import {
   BioIcon,
   ExperienceIcon,
-  ResumeIcon,
   SkillsIcon,
 } from "@/assets/icons";
 
@@ -33,12 +32,6 @@ const menuItems: MenuItem[] = [
   { href: "#experiences", label: "Experiences", icon: ExperienceIcon },
   { href: "#technical-skills", label: "Technical Skills", icon: SkillsIcon },
   { href: "#visitor-stats", label: "Site stats", icon: ChartIcon },
-  {
-    href: "/resume.pdf",
-    label: "Resume",
-    icon: ResumeIcon,
-    isExternal: true,
-  },
 ];
 
 export default function Menu({

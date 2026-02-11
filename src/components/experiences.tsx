@@ -3,7 +3,7 @@ import React from "react";
 // Add or edit entries below. Copy a block and fill in period, role, company, description, technologies.
 const experiences = [
   {
-    period: "2025",
+    period: "2025 – 2026",
     role: "Customer Service and Sales Module Implementation",
     company: "Customer Voice and ClickDimensions",
     description:
