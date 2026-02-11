@@ -7,7 +7,7 @@ export default function Bio() {
       <div className="space-y-4 text-gray-300">
         <p>
           I am a Technology Consultant for Microsoft Dynamics 365 software at{" "}
-          <span className="text-emerald-400">💼 RSM US LLP</span>, specializing
+          <span className="text-emerald-400">💼 Bond Consulting Services</span>, specializing
           in CRM system implementations. With a degree in Data Science, I bring
           expertise in 📊 data analysis, predictive modeling, and machine
           learning.

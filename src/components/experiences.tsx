@@ -1,6 +1,21 @@
 import React from "react";
 
+// Add or edit entries below. Copy a block and fill in period, role, company, description, technologies.
 const experiences = [
+  {
+    period: "2025",
+    role: "Your new project or role",
+    company: "Company or client name",
+    description: "Brief description of what you did and the impact.",
+    technologies: ["Dynamics 365", "Power Platform"],
+  },
+  {
+    period: "2025",
+    role: "Another project or role",
+    company: "Company or client name",
+    description: "Brief description.",
+    technologies: ["List", "technologies", "here"],
+  },
   {
     period: "2024",
     role: "Sales Software Implementation",

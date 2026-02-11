@@ -1,5 +1,5 @@
 Add your assets here:
-- headshot.webp (your photo for the avatar)
+- headshot.jpeg — Replace this file with your new photo to update the site avatar (same filename).
 - favicon.png
 - apple-touch-icon.png (optional)
 - opengraph.png (optional, for social sharing)
