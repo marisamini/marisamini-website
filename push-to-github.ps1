@@ -9,12 +9,14 @@ $repoUrl = "https://github.com/marisamini/marisamini-website.git"   # <-- Change
 $projectRoot = $PSScriptRoot
 Set-Location $projectRoot
 
-# If Git isn't in PATH, try adding the default install location (so you don't have to restart Cursor)
+# If Git isn't in PATH, try adding common install locations (so you don't have to restart Cursor)
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     $gitPaths = @(
         "$env:ProgramFiles\Git\cmd",
         "${env:ProgramFiles(x86)}\Git\cmd",
-        "$env:LOCALAPPDATA\Programs\Git\cmd"
+        "$env:LOCALAPPDATA\Programs\Git\cmd",
+        "C:\Program Files\Git\cmd",
+        "C:\Program Files (x86)\Git\cmd"
     )
     foreach ($p in $gitPaths) {
         if (Test-Path $p) {
@@ -36,7 +38,7 @@ if (-not (Test-Path ".git")) {
 }
 git add .
 git status
-git commit -m "Marisa Mini portfolio - initial commit"
+git commit -m "Update portfolio - add AI Business Professional certification"
 git remote remove origin 2>$null
 git remote add origin $repoUrl
 Write-Host "`nPushing to GitHub (you may be prompted to sign in)..." -ForegroundColor Cyan

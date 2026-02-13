@@ -30,6 +30,7 @@ const dynamicsModules = [
 ];
 
 const certifications = [
+  "Microsoft Certified: AI Business Professional",
   "Microsoft Power Platform Solution Architect Expert",
   "Microsoft Power Platform Functional Consultant",
   "Teams Meeting and Meeting Rooms Technical Assessments",
