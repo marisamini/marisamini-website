@@ -76,9 +76,6 @@ export default function ConnectSidebar() {
             Email me
           </a>
         )}
-        <p className="mt-2 text-xs text-gray-500">
-          Open to consulting, product management, AI/technical, and sports tech opportunities
-        </p>
       </div>
     </div>
   );

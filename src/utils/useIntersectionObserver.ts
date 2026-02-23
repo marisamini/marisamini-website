@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const sectionIds = ["#bio", "#experiences", "#technical-skills", "#visitor-stats"];
+const sectionIds = ["#bio", "#experiences", "#technical-skills"];
 
 export default function useIntersectionObserver(
   setActiveSection: (id: string) => void

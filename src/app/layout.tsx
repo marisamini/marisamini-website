@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { metadataConfig, viewportConfig } from "@/lib/metadata";
-import RecordVisit from "@/components/RecordVisit";
 import SkipToContent from "@/components/SkipToContent";
 import "../styles/globals.css";
 
@@ -18,7 +17,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <SkipToContent />
         {children}
-        <RecordVisit />
         <Analytics />
         <SpeedInsights />
       </body>
